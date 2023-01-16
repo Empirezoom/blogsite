@@ -1,0 +1,76 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block header %}
+      {% include 'header.html' %}
+{% endblock header %}
+
+
+
+
+{% block content %}
+    
+
+  <br><br><br><br>
+  
+    <div class="row" data-masonry='{"percentPosition": true }'>
+        
+      {% if movies %}
+        {% for item in movies %}
+            <div class="col-sm-6 col-lg-4 mb-4" style="width: 48%;">
+              <a href="{% url 'moviedet' item.id item.slug %}"> 
+                  <img src="{{item.movie.url}}" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200"
+                  aria-label="Placeholder: video cap" >
+              </a>
+              <div class="card">
+                 
+                <div class="card-body">
+                    <h5 class="card-title">{{item.content|title}}</h5>
+                    <p class="card-text"></p>
+                    <p class="card-text"><small class="text-muted">Updated :{{item.updated}}</small></p>
+                    <p class="card-text">{{item.title}}</p>
+                    
+
+                        <a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ffiddle.jshell.net%2F_display%2F&text=TITLE&url=URL" target="_blank" onclick="return Share.me(this)" style="float: right;"><i class="fa-brands fa-twitter fa-2x" style="color: skyblue;"></i>share</a>
+         
+                        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" style="float: left;"><i class="fa-brands fa-facebook fa-2x" style="color: blue;"></i>Share</a></div>
+
+                </div>
+            </div>
+          </div>
+     {% endfor %} 
+{% endif %}
+
+       
+
+
+
+
+    
+
+
+
+
+
+
+    </div>
+
+{% endblock content %}
+
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock footer %}
+      
+
+        
+    
+
+
+    
+
+ 
+    
+
+
+
+

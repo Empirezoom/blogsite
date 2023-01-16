@@ -1,0 +1,99 @@
+
+ <nav class=" navbar navbar-expand-lg fixed-top navbar-dark bg-success navbar-toggler ">
+   <!-- Container wrapper -->
+   <div class="container-fluid">
+     <!-- Toggle button -->
+     <button
+       class="navbar-toggler"
+       type="button"
+       data-mdb-toggle="collapse"
+       data-mdb-target="#navbarRightAlignExample"
+       aria-controls="navbarRightAlignExample"
+       aria-expanded="false"
+       aria-label="Toggle navigation"
+     >
+       <i class="fas fa-bars"></i>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <!-- Navbar brand -->
+       <a class="navbar-brand mt-2 mt-lg-0" href="#">
+         <img
+           src="{{bloger.logo.url}}"
+           
+           alt="Empire Logo"
+           loading="lazy"
+         />
+       </a>
+
+     </div>
+     
+     <!-- Collapsible wrapper -->
+     <!-- Collapsible wrapper -->
+     <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+    
+       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %} 
+      
+        
+        <li class="nav-item">
+          {% if user.customer %}
+          <img src="{{user.customer.pix.url}}" style="height: 40px;width: 40px;" title="{{user.username|title}}" alt="profile picture" >
+          {% endif %}
+      </li>
+      &nbsp;&nbsp;
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' %}"> <span style="color: rgb(250, 255, 240);font-family:fantasy;">{{user.username|title}}</span></a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href=""> <i class="fa fa-map-pin" aria-hidden="true" style="height: 30px;width: 30px;">message</i></a>
+      </li> -->
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {% else %}
+      <li class="nav-item">
+        <img src="/media/favicon/comrade.PNG" style="height: 40px;width: 40px;" aria-placeholder="comrade" title="COMRADE" alt="">
+      </li>
+        {% endif %}
+        <li class="nav-item">
+         <li class="nav-item">
+           <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a> 
+         </li>
+         
+         {% for item in categories %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'category' item.id %}">{{item.type}}</a> 
+          </li>
+         {% endfor %}
+         <li class="nav-item">
+            <form class="d-flex input-group w-auto" action="{% url 'search' %}" method="POST"> 
+              {% csrf_token %}
+              <input type="search" name="search" class="form-control rounded"  placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
+            </form>
+         </li>
+         {% if user.is_authenticated %}
+         <li class="nav-item">
+           <a class="nav-link" class="btn btn-sm btn-outline-success" href="{% url 'signout' %}"><i class="fa fa-sign-out" aria-hidden="true"  title="signout"></i></a> 
+         </li> 
+         {% else %}
+         <li class="nav-item">
+          <a class="nav-link" class="btn btn-sm btn-outline-success" href="{% url 'signin' %}"><i class="fa fa-sign-in" aria-hidden="true"></i>sign in or register</a> 
+        </li>
+         {% endif %}
+       </ul>
+       <!-- Left links -->
+     </div>
+     <!-- Collapsible wrapper -->
+   </div>
+   <!-- Container wrapper -->
+ </nav>
+  
+ 
+<!-- Header DONE -->
+{% if messages %}
+  {% for item in messages %}
+  <div class="alert alert-success alert-dismissible fade show text-center mb-0" role="alert">
+    <strong>{{item}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+{% endif %}
+<!-- pop up done -->

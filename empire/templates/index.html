@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+   {% include 'header.html' %}
+{% endblock header %}
+
+{% block header2 %}
+      {% include 'header2.html' %}
+{% endblock header2 %}
+
+
+{% block content %}
+    
+
+  <div class="container-fluid">
+    <div class="row">
+      <div  class="card col-md-3 col-lg-2 d-md-block  sidebar " style="width: 20%;">
+        <div class="position-sticky pt-3">
+          <ul class="div flex-column" style="width: 100%;height:100%;">
+            {% if user.is_authenticated %}
+            <a class="link" href="{% url 'profile' %}"> 
+            <li class="item" >
+              <span data-feather="file"></span><i class="fa fa-dashboard" aria-hidden="true"></i>
+              Profile
+            </a>
+              
+            {% endif %}
+            </a>
+            </li>
+            <li class="item">
+              <a class="link" href="{% url 'about' %}"> 
+                <span data-feather="users"></span><i class="fa-solid fa-address-book" style="color: green"></i>&nbsp;
+                About 
+              </a>
+            </li>      
+            <li class="item">
+              <a class="link" href="{% url 'contact' %}"> 
+                Contact 
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="mailto:matthew123224@gmail.com">
+                <span data-feather="bar-chart-2"></span><i class="fa-sharp fa-solid fa-envelope" style="color: darkolivegreen"></i>&nbsp;
+                Mail 
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="mailto:ancestor.profzoom@gmail.com">
+                <span data-feather="bar-chart-2"></span><i class="fa-solid fa-truck-fast" style="color: yellowgreen;"></i>&nbsp;
+                Mail2
+              </a>
+            </li>
+           
+          </ul>
+          
+        </div>
+      </div>
+
+      <main class="card col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 80%;margin-left: 20%;">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">All post</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+          
+             
+        {% if all %}       
+        {% for item in all %}
+        <div class=" col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 100%;">
+            <div class="card  mx-auto" style="width: 49%; height: 50%;">
+             <a href="{% url 'catdet' item.slug %}"><img src="{{item.image.url}}"class="bd-placeholder-img card-img-top" width="100%" height="100%"
+                aria-label="Placeholder: img cap" alt=""></a> 
+                <div class="card-body"> 
+                  <h5 class="card-title" style="color: orangered;">{{item.title|title}}</h5>
+                        <p class="card-text">{{item.content}}</p>
+                        <p class="card-text"><small class="text" style="color: darkblue;"> Updated: {{item.updated}} </small></p>
+                        <form action="{% url 'post_like' %}" method="POST"> 
+                          <input type="hidden" name="post_id" value="{{item.id}}">
+                          {% csrf_token %}
+                          {% if user not in post.liked.all %}
+                          <button  class="btn-danger"><i class="fa-regular fa-heart "></i>&nbsp;&nbsp;</button><strong>{{item.liked.all.count}}like[s]</strong>
+                          {% else %}
+                          <button  class="btn-danger"><i class="fa-regular fa-heart "></i>&nbsp;&nbsp;</button><strong>{{item.liked.all.count}}like[s]</strong>
+                          {% endif %}
+                        </form>
+                        <br>
+                        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" style="float: left;"><i class="fa-brands fa-facebook fa-2x" style="color: blue;"></i>Share</a></div>
+               
+                        <a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ffiddle.jshell.net%2F_display%2F&text=TITLE&url=URL" target="_blank" onclick="return Share.me(this)" style="float: right;"><i class="fa-brands fa-twitter fa-2x" style="color: skyblue;"></i>share</a>
+                </div>
+            
+            </div>
+        </div>
+        
+        
+        {% endfor %}
+    {% endif %}
+        
+           
+
+          </div>
+        </div>
+
+            
+
+        
+
+            
+
+
+      
+
+
+
+        <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+    </main>
+{% endblock content %}
+
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock footer %}
+      
+
+        
+    
+
+
+    
+
+ 
+    
+
+
+
+

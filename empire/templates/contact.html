@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+      {% include 'header.html' %}
+{% endblock header %}
+
+
+
+
+{% block content %}
+    
+
+  <div class="container-fluid">
+    <div class="row">
+      <div  class="card col-md-3 col-lg-2 d-md-block  sidebar " style="width: 20%;">
+        <div class="position-sticky pt-3">
+          <ul class="div flex-column">
+            <li class="div-item">
+              <a class="link active" aria-current="page" href="{% url 'homepage' %}"> 
+                <span data-feather="home"></span><i class="fa fa-home" aria-hidden="true" style="color: green"></i>
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="{% url 'about' %}">
+                <span data-feather="users"></span><i class="fa-solid fa-address-book" style="color: green"></i>&nbsp;
+                About
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="mailto:matthew123224@gmail.com">
+                <span data-feather="bar-chart-2"></span><i class="fa-sharp fa-solid fa-envelope" style="color: darkolivegreen"></i>&nbsp;
+                Mail 
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="mailto:ancestor.profzoom@gmail.com">
+                <span data-feather="bar-chart-2"></span><i class="fa-solid fa-truck-fast" style="color: yellowgreen;"></i>&nbsp;
+                Other Mail
+              </a>
+            </li>
+           
+          </ul>
+          
+        </div>
+      </div>
+
+      <main class="card col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 80%;margin-left: 20%;height: 100%;">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Contact Us</h1>
+        
+        </div>
+      
+
+
+
+         <div id="form-main" style="width: 100%;height:100%;">
+            <div id="form-div">
+              <form class="montform" id="reused_form" action="{% url 'contact' %}" method="POST" > 
+                {% csrf_token %}
+                <p class="name">
+                   <input name="first_name" type="text" class="feedback-input" required placeholder="Input First Name" id="name" />
+                </p>
+                <p class="name">
+                   <input name="last_name" type="text" class="feedback-input" required placeholder="Input Last Name" id="name" />
+                </p>
+                <p class="email">
+                  <input name="email" type="email" required  class="feedback-input" id="email" placeholder="Input Email" />
+                </p>
+                <p class="text">
+                  <textarea name="message" class="feedback-input" id="comment" placeholder="Write A Message"></textarea>
+                </p>
+                      <div class="submit">
+                  <button type="submit" class="button-blue">SUBMIT</button>
+                  <div class="ease"></div>
+                </div>
+              </form>  
+            </div>
+          </div>
+
+      
+
+        <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+      </main>
+            
+   
+{% endblock content %}
+
+
+      
+
+        
+    
+
+
+    
+
+ 
+    
+
+
+
+

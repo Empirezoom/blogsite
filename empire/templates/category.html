@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+      {% include 'header.html' %}
+{% endblock header %}
+
+
+
+
+{% block content %}
+
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice" role="img" focusable="false">
+            <rect width="100%" height="100%" fill="green" /></svg>
+
+          <div class="container">
+            <div class="carousel-caption text-left">
+              
+              
+              {% for item in categories %}
+              <h1>{{item.main}}</h1>
+            
+              {% endfor %}
+                
+              <p><a class="btn btn-lg btn-primary" href="https://wa.me/2348173057810" role="button"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></p> 
+             
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice" role="img" focusable="false">
+            <rect width="100%" height="100%" fill="blue" /></svg>
+
+          <div class="container">
+            <div class="carousel-caption">
+              {% for item in categories %}
+              <h1>{{item.main}}</h1>
+            
+              {% endfor %}
+                
+              <p><a class="btn btn-lg btn-dark" href="{% url 'about' %}" role="button">Learn more</a></p> 
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice" role="img" focusable="false">
+            <rect width="100%" height="100%" fill="dark" /></svg>
+
+          <div class="container">
+            <div class="carousel-caption text-right">
+              {% for item in categories %}
+              <h1>{{item.main}}</h1>
+            
+              {% endfor %}
+              <p><a class="btn btn-lg btn-success" href="{% url 'contact' %}" role="button">Contact Us</a></p> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="container py-5">
+        <div class="row mb-lg-5 pb-5">
+         
+        {% if blogcat %}       
+        {% for item in blogcat %}
+        <div class=" col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 100%;">
+            <div class="card  mx-auto" style="width: 49%; height: 50%;">
+             <a href="{% url 'catdet' item.slug %}"><img src="{{item.image.url}}"class="bd-placeholder-img card-img-top" width="100%" height="100%"
+                aria-label="Placeholder: img cap" alt=""></a> 
+                <div class="card-body"> 
+                    <h5 class="card-text" style="color: darkorange;"><b>{{item.title|title}}</b></h5>
+                  <p class="card-title"><b>{{item.content}}</b></p>
+                  <a class="btn btn-warning" href="{item.file.url}}" download="">Download</a>&nbsp;&nbsp;
+                 <p class="card-text"><small class="text-" style="color: burlywood;"><b> Updated: {{item.updated}}</b></small></p>
+                 <form action="{% url 'post_like' %}" method="POST"> 
+                  <input type="hidden" name="post_id" value="{{item.id}}">
+                  {% csrf_token %}
+                  {% if user not in post.liked.all %}
+                  <button  class="btn-danger"><i class="fa-regular fa-heart "></i>&nbsp;&nbsp;</button><strong>{{item.liked.all.count}}like[s]</strong >
+                  {% else %}
+                  <button  class="btn-danger"><i class="fa-regular fa-heart "></i>&nbsp;&nbsp;</button><span style="color: darkblue;"><strong>{{item.liked.all.count}}like[s]</strong></span>
+                  {% endif %}
+                </form>
+                        <br>
+                        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" style="float: left;"><i class="fa-brands fa-facebook fa-2x" style="color: blue;"></i>Share</a></div>
+               
+                        <a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ffiddle.jshell.net%2F_display%2F&text=TITLE&url=URL" target="_blank" onclick="return Share.me(this)" style="float: right;"><i class="fa-brands fa-twitter fa-2x" style="color: skyblue;"></i>share</a>
+                </div>
+            
+            </div>
+        </div>
+        
+        
+        {% endfor %}
+    {% endif %}
+      
+            
+    
+
+            
+
+
+        
+
+        
+        
+        
+
+
+
+        
+        </div>
+ </div>
+
+
+ <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+{% endblock content %}
+
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock footer %}
+      
+
+        
+    
+
+
+    
+
+ 
+    
+
+
+
+

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+      {% include 'header.html' %}
+{% endblock header %}
+
+
+
+
+{% block content %}
+    
+
+  <div class="container-fluid">
+    <div class="row">
+      <div  class="card col-md-3 col-lg-2 d-md-block  sidebar " style="width: 20%;">
+        <div class="position-sticky pt-3">
+          <ul class="div flex-column">
+            {% if user.is_authenticated %}
+            <li class="item">
+              <a class="link" href="{% url 'profile' %}">
+                <span data-feather="file"></span><i class="fa fa-dashboard" aria-hidden="true"></i>
+                Dashboard 
+              </a>
+              
+            {% endif %}
+            </a>
+            </li>
+            <li class="div-item">
+              <a class="link active" aria-current="page" href="{% url 'about' %}"> 
+                <span data-feather="home"></span><i class="fa-solid fa-images" style="color: red"></i>
+                About
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="">
+                <span data-feather="users"></span><i class="fa-solid fa-address-book" style="color: green"></i>&nbsp;
+                Contact Us
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="mailto:matthew123224@gmail.com">
+                <span data-feather="bar-chart-2"></span><i class="fa-sharp fa-solid fa-envelope" style="color: darkolivegreen"></i>&nbsp;
+                Mail Us
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="mailto:ancestor.profzoom@gmail.com">
+                <span data-feather="bar-chart-2"></span><i class="fa-solid fa-truck-fast" style="color: yellowgreen;"></i>&nbsp;
+                Other Mail
+              </a>
+            </li>
+           
+          </ul>
+          
+        </div>
+      </div>
+
+      <main class="card col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 80%;margin-left: 20%;">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2"><i class="fa fa-search" aria-hidden="true">SEARCH</i></h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+          </div>
+        </div>
+        <h2 class="display-5">
+          {% if user.customer %}
+          <img src="{{user.customer.pix.url}}" style="height: 40px;width: 40px;" title="{{user.username|title}}" alt="" >
+          {% endif %} 
+          searched for {{items}}</h2>
+
+        {% if searched_item %}
+         {% for item in searched_item %}
+          <div class=" col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 100%;">
+            <div class="card  mx-auto" style="width: 49%; height: 100%;">
+              <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+                <div class="music mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                  <div class="my-3 py-3">
+                    <h3 class="display-5"></h3>
+                      <p class="lead">{{item.title|title}}</p>
+                  </div>
+                  <div >
+                  <img src="{{item.image.url}}" alt="" style="width: 100%;height:100%;">
+                  <a href="{% url 'catdet' item.slug %}" ><i class="fa-regular fa-comment btn btn-primary ">comment</i></a>
+                    
+                  
+                
+                  
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% endif %}
+      
+
+
+
+
+
+
+    </main>
+{% endblock content %}
+
+
+      
+
+        
+    
+
+
+    
+
+ 
+    
+
+
+
+

@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+      {% include 'header.html' %}
+{% endblock header %}
+
+
+
+
+{% block content %}
+    
+
+  <div class="container-fluid">
+    <div class="row">
+      <div  class="card col-md-3 col-lg-2 d-md-block  sidebar " style="width: 20%;">
+        <div class="position-sticky pt-3">
+         <img src="{{userprof.pix.url}}" class="img-thumbnail" style="height: 100%;width: 100%;" alt="profilePicture">
+        </div>
+      </div>
+
+      <main class="card col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 80%;margin-left: 20%;">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">    <i class="fa fa-dashboard" style="color: green;" aria-hidden="true"><span style="color: yellowgreen;">dashboard</span></i></h1>
+          
+        </div>
+
+              <!-- Pills navs -->
+  <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+    
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="tab-profile" data-mdb-toggle="pill" href="#pills-profile" role="tab"
+        aria-controls="pills-profile" aria-selected="true"><span style="color:green;font-size: xx-large;"><strong>{{userprof.user|title}}&nbsp;</strong></span> Profile</a>
+    </li>
+    </ul>
+    <!-- Pills navs -->
+    
+    <!-- Pills content -->
+    <div class="tab-content">
+  
+    <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="tab-profile">
+      <form action="" >
+
+        <!-- Name input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="profileName">First Name</label>
+          <input type="text" value="{{userprof.first_name}}" readonly id="profileName" class="form-control" />
+        </div>
+
+        <div class="form-outline mb-4">
+          <label class="form-label" for="profileName">Last Name</label>
+          <input type="text" value="{{userprof.last_name}}" readonly id="profileName" class="form-control" />
+        </div>
+    
+      
+    
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="profileEmail">Email</label>
+          <input type="email" value="{{userprof.email}}" readonly id="profileEmail" class="form-control" />
+        </div>
+    
+      
+    
+        <!-- <address input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="address">Address</label>
+            <input type="address" value="{{userprof.address}}" readonly id="address" class="form-control" />
+          </div>
+    
+        <!-- Phone number input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input type="number" value="{{userprof.phone}}" readonly id="phone" class="form-control" />
+          </div>
+
+          <!-- UPDATE PROFILE LINK  -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="phone">UPDATE PROFILE ?</label>
+            <a href="{% url 'update' %}" class="btn btn-success">Click Here TO Update Your Profile</a> 
+         
+          </div>
+          <!-- UPDATE PROFILE LINK  -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="phone">UPDATE PASSWORD ?</label>
+            <a href="{% url 'passupdate' %}" class="btn btn-success">Click Here TO Change Your Password</a> 
+         
+          </div>
+    
+       
+    
+    
+    
+    
+    
+
+      </form>
+    </div>
+    </div>
+            
+
+        
+        
+            
+
+
+      
+
+
+
+        <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+    </main>
+{% endblock content %}
+
+
+
+        
+    
+
+
+    
+
+ 
+    
+
+
+
+
