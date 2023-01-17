@@ -1,59 +1,88 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
   <div class="container-fluid">
-    <ul class="navbar-nav">
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Contact links
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          {% if user.is_authenticated %}
-          <a class="dropdown-item" href="{% url 'profile' %}"> 
-          <li class="item" >
-            <span data-feather="file"></span><i class="fa fa-dashboard" aria-hidden="true"></i>
-            Profile
-          </a>  
-          {% endif %}
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarLeftAlignExample"
+      aria-controls="navbarLeftAlignExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Navbar dropdown -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+          <b>Contact links</b>
           </a>
-          </li> 
-          <li>
-            <a class="dropdown-item" href="{% url 'about' %}"><span data-feather="users"></span><i class="fa-solid fa-address-book" style="color: green"></i>&nbsp;
-              About </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="{% url 'contact' %}"> </i>
-              Feedback </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="https://www.facebook.com/sarah.thomson.23"><span style="color: blue;"><i class="fa fa-facebook" aria-hidden="true"> Facebook</i></span></a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="https://wa.me/2348173057810"> </i>
-              <span data-feather="shopping-cart"></span>
-               <i class="fa-brands fa-whatsapp" style="color: green;">Whatsapp</i></a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="https://t.me/profzoom"> </i>
-              <span data-feather="users"></span>
-              <i class="fa-brands fa-telegram" style="color: skyblue;">Telegram</i></a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="mailto:matthew123224@gmail.com"> </i><span data-feather="bar-chart-2"></span><i class="fa-sharp fa-solid fa-envelope" style="color: darkolivegreen"></i>&nbsp;
-              Mail </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="mailto:ancestor.profzoom@gmail.com"><span data-feather="bar-chart-2"></span><i class="fa-solid fa-truck-fast" style="color: yellowgreen;"></i>&nbsp;
-              Mail2</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+          <!-- Dropdown menu -->
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="{% url 'about' %}"><span data-feather="users"></span><i class="fa-solid fa-address-book" style="color: green"></i>&nbsp;
+                About </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'contact' %}"> </i>
+                Feedback </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.facebook.com/sarah.thomson.23"><span style="color: blue;"><i class="fa fa-facebook" aria-hidden="true"> Facebook</i></span></a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://wa.me/2348173057810"> </i>
+                <span data-feather="shopping-cart"></span>
+                 <i class="fa-brands fa-whatsapp" style="color: green;">Whatsapp</i></a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://t.me/profzoom"> </i>
+                <span data-feather="users"></span>
+                <i class="fa-brands fa-telegram" style="color: skyblue;">Telegram</i></a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="mailto:matthew123224@gmail.com"> </i><span data-feather="bar-chart-2"></span><i class="fa-sharp fa-solid fa-envelope" style="color: darkolivegreen"></i>&nbsp;
+                Mail </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="mailto:ancestor.profzoom@gmail.com"><span data-feather="bar-chart-2"></span><i class="fa-solid fa-truck-fast" style="color: yellowgreen;"></i>&nbsp;
+                Mail2</a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            {% if user.is_authenticated %}
+            <a class="dropdown-item" href="{% url 'profile' %}"> 
+            <li class="item" >
+              <span data-feather="file"></span><i class="fa fa-dashboard" aria-hidden="true"></i>
+              Profile
+            </a>  
+            {% endif %}
+            </a>
+            </li> 
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled"
+            >Empire Blog</a
+          >
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
   </div>
+  <!-- Container wrapper -->
 </nav>
+
