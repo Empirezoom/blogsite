@@ -3,59 +3,11 @@
 {% block header %}
       {% include 'header.html' %}
 {% endblock header %}
+{% block header2 %}
+      {% include 'header2.html' %}
+{% endblock header2 %}
 {% block content %} 
   <main class="card col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 100%;">
-    <div class="nav-item dropdown" >
-       
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdownMenuLink"
-        role="button"
-        data-mdb-toggle="dropdown"
-        aria-expanded="false"
-      >
-      <h1 class="h2 btn btn-sm btn-outline-success">About Us</h1>
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        {% if user.is_authenticated %}
-        <a class="dropdown-item" href="{% url 'profile' %}"> 
-        <li class="item" >
-          <span data-feather="file"></span><i class="fa fa-dashboard" aria-hidden="true"></i>
-          Profile
-        </a>  
-        {% endif %}
-        </a>
-        </li> 
-  
-        <li>
-          <a class="dropdown-item" href="https://www.facebook.com/sarah.thomson.23"><span style="color: blue;"><i class="fa fa-facebook" aria-hidden="true"> Facebook</i></span></a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="https://wa.me/2348173057810"> </i>
-            <span data-feather="shopping-cart"></span>
-             <i class="fa-brands fa-whatsapp" style="color: green;">Whatsapp</i></a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="https://t.me/profzoom"> </i>
-            <span data-feather="users"></span>
-            <i class="fa-brands fa-telegram" style="color: skyblue;">Telegram</i></a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="{% url 'contact' %}"> </i>
-            Contact  </a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="mailto:matthew123224@gmail.com"> </i><span data-feather="bar-chart-2"></span><i class="fa-sharp fa-solid fa-envelope" style="color: darkolivegreen"></i>&nbsp;
-            Mail </a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="mailto:ancestor.profzoom@gmail.com"><span data-feather="bar-chart-2"></span><i class="fa-solid fa-truck-fast" style="color: yellowgreen;"></i>&nbsp;
-            Mail2</a>
-        </li>
-      </ul>
-   </div>
- 
   <div class=" col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 100%;">
     <div class="card  mx-auto" style="width: 55%; height: 50%;">
       <img src="{{about.ceo_pix.url}}"class="bd-placeholder-img card-img-top" width="100%" height="100%"alt="" >
