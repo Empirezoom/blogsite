@@ -3,93 +3,88 @@
 {% block header %}
       {% include 'header.html' %}
 {% endblock header %}
-{% block content %}
-    
-<div class="container-fluid">
-  <div class="row">
-    <div  class="card col-md-3 col-lg-2 d-md-block  sidebar " style="width: 20%;">
-      <div class="position-sticky pt-3">
-          <h1 class="h2 btn btn-sm btn-outline-success">@{{bloger.b_name}} links</h1>
-          <ul class="div flex-column">
-              <li class="div-item">
-                <a class="link active" aria-current="page" href="https://www.facebook.com/sarah.thomson.23">
-                  <span data-feather="home"></span>
-                  <i class="fa-brands fa-facebook" style="color: blue;"></i>&nbsp;  Facebook
-                </a>
-              </li>
-              <li class="item">
-                <a class="link" href="">
-                  <span data-feather="file"></span>
-                  <i class="fa-brands fa-instagram" style="color: red;"></i>&nbsp;Instagram
-                </a>
-              </li>
-              <li class="item">
-                <a class="link" href="https://wa.me/2348173057810">
-                  <span data-feather="shopping-cart"></span>
-                  <i class="fa-brands fa-whatsapp" style="color: green;"></i>&nbsp; Whatsapp
-                </a>
-              </li>
-              <li class="item">
-                <a class="link" href="https://t.me/profzoom">
-                  <span data-feather="users"></span>
-                  <i class="fa-brands fa-telegram" style="color: skyblue;"></i> &nbsp;Telegram
-                </a>
-              </li>
-              <li class="item">
-                <a class="link" href="{% url 'contact' %}"> 
-                  <span data-feather="users"></span><i class="fa-solid fa-address-book" style="color: green"></i>&nbsp;
-                  Contact Us
-                </a>
-              </li>
-              <li class="item">
-                <a class="link" href="mailto:matthew123224@gmail.com">
-                  <span data-feather="bar-chart-2"></span>
-                  <i class="fa-sharp fa-solid fa-envelope" style="color: darkolivegreen"></i>&nbsp;Mail Us
-                </a>
-              </li>
-              <li class="item">
-                <a class="link" href="mailto:ancestor.profzoom@gmail.com">
-                  <span data-feather="bar-chart-2"></span>
-                  <i class="fa-solid fa-truck-fast" style="color: yellowgreen;"></i>&nbsp; Other Mail
-                </a>
-              </li>
-             
-            </ul>
+{% block content %} 
+  <main class="card col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 100%;">
+    <div class="container-fluid">
+      <div class="row">
+        <div  class="card col-md-3 col-lg-2 d-md-block  sidebar " style="width: 20%;">
+          <div class="position-sticky pt-3">
+              <h1 class="h2 btn btn-sm btn-outline-success">About Us</h1>
+              <ul class="div flex-column">
+                  <li class="div-item">
+                    <a class="link active" aria-current="page" href="https://www.facebook.com/sarah.thomson.23">
+                      <span data-feather="home"></span>
+                      <i class="fa-brands fa-facebook" style="color: blue;"></i>
+                    </a>
+                  </li>
+                  <li class="item">
+                    <a class="link" href="">
+                      <span data-feather="file"></span>
+                      <i class="fa-brands fa-instagram" style="color: red;"></i>
+                    </a>
+                  </li>
+                  <li class="item">
+                    <a class="link" href="https://wa.me/2348173057810">
+                      <span data-feather="shopping-cart"></span>
+                      <i class="fa-brands fa-whatsapp" style="color: green;"></i>
+                    </a>
+                  </li>
+                  <li class="item">
+                    <a class="link" href="https://t.me/profzoom">
+                      <span data-feather="users"></span>
+                      <i class="fa-brands fa-telegram" style="color: skyblue;"></i>
+                    </a>
+                  </li>
+                  <li class="item">
+                    <a class="link" href="{% url 'contact' %}"> 
+                      <span data-feather="users"></span>
+                      Contact 
+                    </a>
+                  </li>
+                  <li class="item">
+                    <a class="link" href="mailto:matthew123224@gmail.com">
+                      <span data-feather="bar-chart-2"></span>
+                      <i class="fa-sharp fa-solid fa-envelope" style="color: darkolivegreen"></i>&nbsp;Mail1
+                    </a>
+                  </li>
+                  <li class="item">
+                    <a class="link" href="mailto:ancestor.profzoom@gmail.com">
+                      <span data-feather="bar-chart-2"></span>
+                      <i class="fa-solid fa-truck-fast" style="color: yellowgreen;"></i>&nbsp; Mail2
+                    </a>
+                  </li>
+                 
+                </ul>
+          </div>
       </div>
-  </div>
-  
-  <main class="card col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 80%;margin-left: 20%;">
-      <div
-      class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h2 class="text-center" style="color:green;">About Us</h2>
-      </div>
-    
-
-
-      <img src="{{about.ceo_pix.url}}"class="bd-placeholder-img card-img-top" width="100%" height="100%"alt="">
+  <div class=" col-md-9 ml-sm-auto col-lg-10 px-md-4" style="width: 100%;">
+    <div class="card  mx-auto" style="width: 55%; height: 50%;">
+      <img src="{{about.ceo_pix.url}}"class="bd-placeholder-img card-img-top" width="100%" height="100%"alt="" >
       <h4> Developers Name : {{about.ceo_name}}</h4>
       <h4> Company's Name : {{about.b_name}}</h4>
       <h4> Whatsapp No : <span style="color: green;">{{about.phone_no}}</span></h4>
       <h4> Call No : <span style="color: skyblue;">{{about.phone_no2}}</span></h4>
       <h4> Status : <span style="color: yellowgreen;">OWNER</span></h4>
+  
+  
 
-
-      <div>
-
+  
           <h1>About <b>{{about.b_name}}</b></h1><br/><br/>
             {{about.about}}
           Anthony Matthew Have a nice day !<p><br/>
           
           
           <br/>
-          
-          </div>
+
+    </div>
+   
+  </div>
 
      
 
 
 
-      
+  <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>  
   </main>
   
 
